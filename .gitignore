@@ -43,7 +43,7 @@ phpunit.phar
 /backend/web/robots.txt
 
 #ignore config files
-/frontend/config
-/backend/config
-/common/config
-/console/config
+#/frontend/config
+#/backend/config
+#/common/config
+#/console/config
