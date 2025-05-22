@@ -1,6 +1,6 @@
 <?php
 
-namespace frontend\olymp\models;
+namespace frontend\models\olymp;
 
 use Yii;
 
