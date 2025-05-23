@@ -23,6 +23,9 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
         <?= Html::a('Вернуться к списку', ['index'], ['class' => 'btn btn-info']) ?>
+        <?= Html::a('Перейти к явкам', ['appearance/view', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Перейти к заданиям', ['tasks', 'id' => $model->id], ['class' => 'btn btn-warning']) ?>
+        <?= Html::a('Перейти к проставлению баллов', ['journal', 'id' => $model->id], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?= DetailView::widget([

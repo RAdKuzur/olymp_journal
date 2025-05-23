@@ -2,6 +2,7 @@
 
 namespace frontend\models\olymp;
 
+use common\repositories\ApplicationRepository;
 use Yii;
 
 /**
@@ -16,7 +17,20 @@ use Yii;
  */
 class Appearance extends \yii\db\ActiveRecord
 {
+    public const NON_APPEARANCE = 0;
+    public const APPEARANCE = 1;
 
+    public static function fill(
+        $applicationId,
+        $status,
+        $auditorium
+    ){
+        $entity = new static();
+        $entity->application_id = $applicationId;
+        $entity->status = $status;
+        $entity->auditorium = $auditorium;
+        return $entity;
+    }
 
     /**
      * {@inheritdoc}

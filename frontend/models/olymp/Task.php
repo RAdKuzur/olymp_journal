@@ -17,7 +17,17 @@ use Yii;
  */
 class Task extends \yii\db\ActiveRecord
 {
-
+    public static function fill(
+        $subjectCategoryId,
+        $number,
+        $max_points
+    ){
+        $entity = new static();
+        $entity->subject_category_id = $subjectCategoryId;
+        $entity->number = $number;
+        $entity->max_points = $max_points;
+        return $entity;
+    }
 
     /**
      * {@inheritdoc}

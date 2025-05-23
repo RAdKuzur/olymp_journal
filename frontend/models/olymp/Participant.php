@@ -89,5 +89,8 @@ class Participant extends \yii\db\ActiveRecord
     {
         return $this->hasOne(School::class, ['id' => 'school_id']);
     }
-
+    public function getFullFio()
+    {
+        return $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
+    }
 }
