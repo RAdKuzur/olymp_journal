@@ -34,4 +34,11 @@ class TaskService
         }
         $this->taskRepository->delete($task);
     }
+    public function getUniqueTasks($taskApplications) {
+        $tasks = [];
+        foreach ($taskApplications as $item) {
+            $tasks[$item->task_id] = $item->task; // предполагая, что есть связь с Task
+        }
+        return $tasks;
+    }
 }

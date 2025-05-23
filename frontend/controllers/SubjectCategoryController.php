@@ -5,29 +5,43 @@ namespace frontend\controllers;
 
 
 use common\repositories\SubjectCategoryRepository;
+use common\repositories\TaskApplicationRepository;
 use common\repositories\TaskRepository;
+use common\services\ErrorService;
+use common\services\TaskApplicationService;
 use common\services\TaskService;
 use frontend\models\olymp\Task;
+use frontend\models\olymp\TaskApplication;
 use Yii;
 use yii\data\ActiveDataProvider;
+use yii\helpers\BaseArrayHelper;
 
 class SubjectCategoryController extends \yii\web\Controller
 {
     private SubjectCategoryRepository $subjectCategoryRepository;
     private TaskRepository $taskRepository;
     private TaskService $taskService;
+    private TaskApplicationRepository $taskApplicationRepository;
+    private TaskApplicationService $taskApplicationService;
+    private ErrorService $errorService;
     public function __construct(
         $id,
         $module,
         SubjectCategoryRepository $subjectCategoryRepository,
         TaskRepository $taskRepository,
         TaskService $taskService,
+        TaskApplicationRepository $taskApplicationRepository,
+        TaskApplicationService $taskApplicationService,
+        ErrorService $errorService,
         $config = []
     )
     {
         $this->subjectCategoryRepository = $subjectCategoryRepository;
         $this->taskRepository = $taskRepository;
         $this->taskService = $taskService;
+        $this->taskApplicationRepository = $taskApplicationRepository;
+        $this->taskApplicationService = $taskApplicationService;
+        $this->errorService = $errorService;
         parent::__construct($id, $module, $config);
     }
 
@@ -46,7 +60,6 @@ class SubjectCategoryController extends \yii\web\Controller
             'model' => $model
         ]);
     }
-    public function actionCreate(){}
     public function actionUpdate($id){
         Yii::$app->session->setFlash('danger', 'Для изменения обратитесь к разработчику');
         return $this->redirect(['index']);
@@ -73,7 +86,31 @@ class SubjectCategoryController extends \yii\web\Controller
         $this->taskService->delete($id);
         return $this->redirect(['tasks', 'id' => $task->subject_category_id]);
     }
-    public function actionJournal($id){
+    public function actionJournal($id) {
+        $this->errorService->checkError($id, ErrorService::JOURNAL_TYPE_ERROR);
+        $taskApplications = $this->taskApplicationRepository->getBySubjectCategoryId($id);
+        $dataProvider = $this->taskApplicationService->prepareJournalDataProvider($taskApplications);
+        return $this->render('journal', [
+            'dataProvider' => $dataProvider,
+            'tasks' => $this->taskService->getUniqueTasks($taskApplications),
+            'id' => $id
+        ]);
+    }
+    public function actionCreateJournal($id){
+        $this->taskApplicationService->create($id);
+        return $this->redirect(['journal', 'id' => $id]);
+    }
+    public function actionUpdatePoints($id)
+    {
+        /* @var TaskApplication $model */
+        Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
 
+        $applicationId = Yii::$app->request->post('application_id');
+        $taskId = Yii::$app->request->post('task_id');
+        $points = Yii::$app->request->post('points');
+
+        $model = $this->taskApplicationRepository->getByTaskAndApplicationId($applicationId, $taskId);
+        $this->taskApplicationRepository->changeScore($model, $points);
+        $this->taskApplicationRepository->save($model);
     }
 }

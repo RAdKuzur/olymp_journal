@@ -33,4 +33,12 @@ class AppearanceRepository
             throw new \RuntimeException('Saving error.');
         }
     }
+    public function getAppearancesBySubjectCategoryId($subjectCategoryId)
+    {
+        return Appearance::find()
+            ->joinWith('application')
+            ->where(['application.subject_category_id' => $subjectCategoryId])
+            ->andWhere(['appearance.status' => Appearance::APPEARANCE])
+            ->all();
+    }
 }

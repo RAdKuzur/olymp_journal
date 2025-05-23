@@ -17,7 +17,17 @@ use Yii;
  */
 class TaskApplication extends \yii\db\ActiveRecord
 {
-
+    public static function fill(
+        $applicationId,
+        $taskId,
+        $points = 0
+    ){
+        $entity = new static();
+        $entity->application_id = $applicationId;
+        $entity->task_id = $taskId;
+        $entity->points = $points;
+        return $entity;
+    }
 
     /**
      * {@inheritdoc}
