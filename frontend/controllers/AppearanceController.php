@@ -3,8 +3,10 @@
 namespace frontend\controllers;
 
 use common\repositories\AppearanceRepository;
+use common\repositories\TaskApplicationRepository;
 use common\services\AppearanceService;
 use common\services\ErrorService;
+use frontend\models\olymp\Appearance;
 use Yii;
 
 class AppearanceController extends \yii\web\Controller
@@ -12,6 +14,7 @@ class AppearanceController extends \yii\web\Controller
     private AppearanceRepository $appearanceRepository;
     private AppearanceService $appearanceService;
     private ErrorService $errorService;
+    private TaskApplicationRepository $taskApplicationRepository;
 
     public function __construct(
         $id,
@@ -19,12 +22,14 @@ class AppearanceController extends \yii\web\Controller
         AppearanceRepository $appearanceRepository,
         AppearanceService $appearanceService,
         ErrorService $errorService,
+        TaskApplicationRepository $taskApplicationRepository,
         $config = []
     )
     {
         $this->appearanceRepository = $appearanceRepository;
         $this->appearanceService = $appearanceService;
         $this->errorService = $errorService;
+        $this->taskApplicationRepository = $taskApplicationRepository;
         parent::__construct($id, $module, $config);
     }
 
@@ -45,12 +50,19 @@ class AppearanceController extends \yii\web\Controller
 
     public function actionUpdateStatus()
     {
+        /* @var $model Appearance */
         Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
         $id = Yii::$app->request->post('id');
         $status = Yii::$app->request->post('status');
         $model = $this->appearanceRepository->get($id);
         if ($model) {
-            $model->status = $status;
+            $model->setStatus($status);
+            if ($status == Appearance::NON_APPEARANCE){
+                $tasks = $this->taskApplicationRepository->getByApplicationId($model->application_id);
+                foreach ($tasks as $task){
+                    $this->taskApplicationRepository->delete($task);
+                }
+            }
             return ['success' => $this->appearanceRepository->save($model)];
         }
         return ['success' => false];

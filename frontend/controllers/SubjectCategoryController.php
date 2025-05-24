@@ -4,12 +4,15 @@ namespace frontend\controllers;
 
 
 
+use common\components\RedisComponent;
 use common\repositories\SubjectCategoryRepository;
 use common\repositories\TaskApplicationRepository;
 use common\repositories\TaskRepository;
 use common\services\ErrorService;
+use common\services\SubjectCategoryService;
 use common\services\TaskApplicationService;
 use common\services\TaskService;
+use frontend\components\ExcelCreator;
 use frontend\models\olymp\Task;
 use frontend\models\olymp\TaskApplication;
 use Yii;
@@ -24,6 +27,7 @@ class SubjectCategoryController extends \yii\web\Controller
     private TaskApplicationRepository $taskApplicationRepository;
     private TaskApplicationService $taskApplicationService;
     private ErrorService $errorService;
+    private SubjectCategoryService $subjectCategoryService;
     public function __construct(
         $id,
         $module,
@@ -33,6 +37,7 @@ class SubjectCategoryController extends \yii\web\Controller
         TaskApplicationRepository $taskApplicationRepository,
         TaskApplicationService $taskApplicationService,
         ErrorService $errorService,
+        SubjectCategoryService $subjectCategoryService,
         $config = []
     )
     {
@@ -42,6 +47,7 @@ class SubjectCategoryController extends \yii\web\Controller
         $this->taskApplicationRepository = $taskApplicationRepository;
         $this->taskApplicationService = $taskApplicationService;
         $this->errorService = $errorService;
+        $this->subjectCategoryService = $subjectCategoryService;
         parent::__construct($id, $module, $config);
     }
 
@@ -112,5 +118,16 @@ class SubjectCategoryController extends \yii\web\Controller
         $model = $this->taskApplicationRepository->getByTaskAndApplicationId($applicationId, $taskId);
         $this->taskApplicationRepository->changeScore($model, $points);
         $this->taskApplicationRepository->save($model);
+    }
+    public function actionDownload($id)
+    {
+        try {
+            $data = $this->subjectCategoryService->prepareData($id);
+            var_dump($data);
+            return ExcelCreator::createForm($data);
+        } catch (\Exception $e) {
+            Yii::$app->session->setFlash('error', $e->getMessage());
+            return $this->redirect(['index']);
+        }
     }
 }

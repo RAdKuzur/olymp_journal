@@ -20,6 +20,9 @@ class AppearanceRepository
             ->where(['application.subject_category_id' => $subjectCategoryId])
             ->all();
     }
+    public function getByApplicationId($applicationId){
+        return Appearance::find()->where(['application_id' => $applicationId])->all();
+    }
     public function checkUnique($applicationId)
     {
         return Appearance::find()->where(["application_id" => $applicationId])->exists();

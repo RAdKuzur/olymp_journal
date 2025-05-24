@@ -74,5 +74,8 @@ class Appearance extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Application::class, ['id' => 'application_id']);
     }
-
+    public function setStatus($status)
+    {
+        $this->status = $status;
+    }
 }

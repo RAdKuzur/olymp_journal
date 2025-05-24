@@ -10,7 +10,6 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 $this->title = 'Задания олимпиады';
-$this->params['breadcrumbs'][] = ['label' => 'Список олимпиад', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="subject-category-tasks">

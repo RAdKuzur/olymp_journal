@@ -25,6 +25,10 @@ class TaskApplicationRepository
         $tasks = $this->taskRepository->getBySubjectCategoryId($subjectCategoryId);
         return TaskApplication::find()->where(['IN',  'task_id', BaseArrayHelper::getColumn($tasks, 'id')])->all();
     }
+    public function getByApplicationId($applicationId)
+    {
+        return TaskApplication::find()->where(['application_id' => $applicationId])->all();
+    }
     public function create($applicationId, $taskId, $points = 0)
     {
         $taskApplication = TaskApplication::fill($applicationId, $taskId, $points);
