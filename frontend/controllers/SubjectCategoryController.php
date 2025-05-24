@@ -123,7 +123,6 @@ class SubjectCategoryController extends \yii\web\Controller
     {
         try {
             $data = $this->subjectCategoryService->prepareData($id);
-            var_dump($data);
             return ExcelCreator::createForm($data);
         } catch (\Exception $e) {
             Yii::$app->session->setFlash('error', $e->getMessage());
