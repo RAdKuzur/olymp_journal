@@ -44,7 +44,8 @@ class Task extends \yii\db\ActiveRecord
     {
         return [
             [['subject_category_id', 'number', 'max_points'], 'required'],
-            [['subject_category_id', 'number', 'max_points'], 'integer'],
+            [['subject_category_id', 'max_points'], 'integer'],
+            [['number'], 'string', 'max' => 256],
             [['subject_category_id'], 'exist', 'skipOnError' => true, 'targetClass' => SubjectCategory::class, 'targetAttribute' => ['subject_category_id' => 'id']],
         ];
     }

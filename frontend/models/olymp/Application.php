@@ -95,5 +95,23 @@ class Application extends \yii\db\ActiveRecord
     {
         return $this->hasMany(TaskApplication::class, ['application_id' => 'id']);
     }
-
+    public function getTotalScore(){
+        $score = 0;
+        foreach($this->taskApplications as $taskApplication){
+            $score = $score + $taskApplication->points;
+        }
+        return $score;
+    }
+    public function setStatus()
+    {
+        if ($this->subjectCategory->winner_score < $this->getTotalScore()){
+            return 'Победитель';
+        }
+        else if($this->subjectCategory->prize_score < $this->getTotalScore() && $this->subjectCategory->winner_score > $this->getTotalScore()){
+            return 'Призёр';
+        }
+        else {
+            return 'Участник';
+        }
+    }
 }

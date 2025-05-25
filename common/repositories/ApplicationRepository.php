@@ -20,6 +20,13 @@ class ApplicationRepository
     public function getBySubjectCategoryId($subjectCategoryId){
         return Application::find()->where(['subject_category_id' => $subjectCategoryId])->all();
     }
+    public function getBySubjectCode($code){
+        return Application::find()
+            ->joinWith('subjectCategory')
+            ->joinWith('subjectCategory.subject')
+            ->where(['subject_code' => $code])
+            ->all();
+    }
     public function save(Application $application){
         if(!$application->save()){
             throw new \RuntimeException('Saving error.');

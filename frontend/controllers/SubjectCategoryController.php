@@ -122,12 +122,12 @@ class SubjectCategoryController extends \yii\web\Controller
     }
     public function actionDownload($id)
     {
-        try {
+        //try {
             $data = $this->subjectCategoryService->prepareData($id);
             return ExcelCreator::createForm($data);
-        } catch (\Exception $e) {
+        //} catch (\Exception $e) {
             Yii::$app->session->setFlash('error', $e->getMessage());
             return $this->redirect(['index']);
-        }
+       // }
     }
 }

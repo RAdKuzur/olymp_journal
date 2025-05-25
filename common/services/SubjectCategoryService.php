@@ -22,13 +22,13 @@ class SubjectCategoryService
     public function prepareData($subjectCategoryId){
         /** @var Application $application */
         $data = [];
-        $applications = $this->applicationRepository->getBySubjectCategoryId($subjectCategoryId);
         $subjectCategory = $this->subjectCategoryRepository->get($subjectCategoryId);
+        $applications = $this->applicationRepository->getBySubjectCode($subjectCategory->subject->subject_code);
         foreach ($applications as $application){
             $item = [
-                'fio' => $application->participant->getFullFio(),
-                'category' => $application->subjectCategory->category,
-                'code' => $application->code,
+                'application' => $application,
+                'participant' => $application->participant,
+                'category' => $application->subjectCategory,
                 'appearance' => $application->appearances,
                 'taskApplications' => $application->taskApplications
             ];

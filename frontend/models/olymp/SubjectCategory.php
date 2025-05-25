@@ -10,6 +10,8 @@ use Yii;
  * @property int $id
  * @property int $subject_id
  * @property int $category
+ * @property int winner_score
+ * @property int prize_score
  *
  * @property Application[] $applications
  * @property Subject $subject
@@ -33,8 +35,8 @@ class SubjectCategory extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['subject_id', 'category'], 'required'],
-            [['subject_id', 'category'], 'integer'],
+            [['subject_id', 'category', 'winner_score', 'prize_score'], 'required'],
+            [['subject_id', 'category', 'winner_score', 'prize_score'], 'integer'],
             [['subject_id'], 'exist', 'skipOnError' => true, 'targetClass' => Subject::class, 'targetAttribute' => ['subject_id' => 'id']],
         ];
     }
@@ -48,6 +50,8 @@ class SubjectCategory extends \yii\db\ActiveRecord
             'id' => 'ID',
             'subject_id' => 'Subject ID',
             'category' => 'Category',
+            'winner_score' => 'Winner Score',
+            'prize_score' => 'Prize Score',
         ];
     }
 
