@@ -122,12 +122,15 @@ class SubjectCategoryController extends \yii\web\Controller
     }
     public function actionDownload($id)
     {
-        //try {
-            $data = $this->subjectCategoryService->prepareData($id);
-            return ExcelCreator::createForm($data);
-        //} catch (\Exception $e) {
+        try {
+            if(!$this->errorService->checkError($id, ErrorService::JOURNAL_TYPE_ERROR) && !$this->errorService->checkError($id, ErrorService::APPEARANCE_TYPE_ERROR)){
+                $data = $this->subjectCategoryService->prepareData($id);
+                return ExcelCreator::createForm($data);
+            }
+            return $this->redirect(['view', 'id' => $id]);
+        } catch (\Exception $e) {
             Yii::$app->session->setFlash('error', $e->getMessage());
             return $this->redirect(['index']);
-       // }
+        }
     }
 }

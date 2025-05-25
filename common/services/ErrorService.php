@@ -39,16 +39,17 @@ class ErrorService
                     count($this->taskApplicationRepository->getBySubjectCategoryId($subjectCategoryId))
                 ) {
                     Yii::$app->session->setFlash('danger', 'Количество присутствовавших участников не совпадает с количеством участников в разделе баллов');
+                    return true;
                 }
-                break;
             case self::APPEARANCE_TYPE_ERROR:
                 if(count($this->appearanceRepository->getBySubjectId($subjectCategoryId)) !=
                     count($this->applicationRepository->getBySubjectCategoryId($subjectCategoryId))) {
                     Yii::$app->session->setFlash('danger', 'Количество заявленных участников не совпадает с количеством участников в разделе явок');
+                    return true;
                 }
-                break;
             default:
-                return NULL;
+                break;
         }
+        return false;
     }
 }
