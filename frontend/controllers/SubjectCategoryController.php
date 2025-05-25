@@ -15,6 +15,7 @@ use common\services\TaskService;
 use frontend\components\ExcelCreator;
 use frontend\models\olymp\Task;
 use frontend\models\olymp\TaskApplication;
+use PhpAmqpLib\Message\AMQPMessage;
 use Yii;
 use yii\data\ActiveDataProvider;
 use yii\helpers\BaseArrayHelper;

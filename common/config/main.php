@@ -15,5 +15,13 @@ return [
             'port' => 6379,
             'database' => 0,
         ],
+        'rabbitmq' => [
+            'class' => 'common\components\RabbitMQComponent',
+            'host' => 'localhost',
+            'port' => 5672,
+            'user' => 'guest',
+            'password' => 'guest',
+            'vhost' => '/',
+        ],
     ],
 ];

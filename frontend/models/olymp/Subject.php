@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $name
+ * @property string $subject_code
  *
  * @property SubjectCategory[] $subjectCategories
  */
@@ -30,7 +31,7 @@ class Subject extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name'], 'required'],
+            [['name', 'subject_code'], 'required'],
             [['name'], 'string', 'max' => 1000],
         ];
     }
@@ -43,6 +44,7 @@ class Subject extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'subject_code' => 'Subject Code',
         ];
     }
 
