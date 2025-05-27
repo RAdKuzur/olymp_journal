@@ -35,7 +35,8 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Олимпиады', 'url' => ['/subject-category/index']],
+        ['label' => 'Олимпиады', 'url' => Yii::$app->params['frontUrl'] . '/index.php?r=site/index'],
+        ['label' => 'Админ-панель. Предметы', 'url' => Yii::$app->params['backUrl'] . '/index.php?r=admin/subject/index'],
     ];
     if (Yii::$app->user->isGuest) {
         $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
