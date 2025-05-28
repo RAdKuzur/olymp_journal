@@ -93,11 +93,11 @@ class Participant extends \yii\db\ActiveRecord
     {
         return $this->surname . ' ' . $this->name . ' ' . $this->patronymic;
     }
-    public function getSex()
+    public function getGender()
     {
         return $this->sex == 1 ? 'Мужской' : 'Женский';
     }
-    public function getOVZ()
+    public function getOvz()
     {
         return $this->disability == 1 ? 'Нет ОВЗ' : 'Есть ОВЗ';
     }

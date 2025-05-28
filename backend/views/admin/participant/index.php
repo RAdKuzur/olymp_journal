@@ -28,7 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'label' => 'Номер телефона',
             ],
             [
-                'attribute' => 'sex',
+                'attribute' => 'gender',
                 'label' => 'Пол',
             ],
             [
@@ -38,6 +38,9 @@ $this->params['breadcrumbs'][] = $this->title;
             [
                 'attribute' => 'citizenship',
                 'label' => 'Гражданство',
+                'value' => function($model) {
+                    return (\common\components\Dictionary::getCountry())[$model->citizenship];
+                }
             ],
             [
                 'attribute' => 'school_id',
@@ -47,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 }
             ],
             [
-                'attribute' => 'disability',
+                'attribute' => 'ovz',
                 'label' => 'ОВЗ',
             ],
             [
