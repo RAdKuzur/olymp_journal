@@ -33,6 +33,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     }
                 ],
                 [
+                    'label' => 'Минимальное количество баллов для призёра',
+                    'value' => 'prize_score'
+                ],
+                [
+                    'label' => 'Минимальное количество баллов для победителя',
+                    'value' => 'winner_score'
+                ],
+                [
                     'class' => 'yii\grid\ActionColumn',
                     'template' => '{update}',
                     'buttons' => [
