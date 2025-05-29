@@ -23,5 +23,13 @@ return [
             'password' => 'guest',
             'vhost' => '/',
         ],
+        'apiService' => [
+            'class' => 'backend\services\ApiService',
+            'baseUrl' => 'https://api.example.com/v1/',
+            'timeout' => 60, // опционально
+            'defaultHeaders' => [ // опционально
+                'Authorization' => 'Bearer your-access-token',
+            ],
+        ],
     ],
 ];

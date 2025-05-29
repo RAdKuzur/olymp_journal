@@ -84,5 +84,8 @@ class SubjectCategory extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Task::class, ['subject_category_id' => 'id']);
     }
-
+    public function getFullEventName()
+    {
+        return $this->subject->name . ' ' . $this->category . ' ' . 'класс';
+    }
 }

@@ -35,7 +35,7 @@ AppAsset::register($this);
             ],
         ]);
         $menuItems = [
-            ['label' => 'Олимпиады', 'url' => Yii::$app->params['frontUrl'] . '/index.php?r=site/index'],
+            ['label' => 'Главная', 'url' => Yii::$app->params['frontUrl'] . '/index.php?r=site/index'],
             ['label' => 'Админ-панель. Предметы', 'url' => ['admin/subject/index']],
             ['label' => 'Админ-панель. Олимпиады', 'url' => ['admin/subject-category/index']],
             ['label' => 'Админ-панель. Участники', 'url' => ['admin/participant/index']],

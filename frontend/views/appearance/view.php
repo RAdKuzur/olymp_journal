@@ -18,9 +18,7 @@ $this->params['breadcrumbs'][] = $this->title;
             echo GridView::widget([
                 'dataProvider' => new ArrayDataProvider([
                     'allModels' => $appearance,
-                    'pagination' => [
-                        'pageSize' => 20,
-                    ],
+                    'pagination' => false,
                 ]),
                 'columns' => [
                     ['class' => 'yii\grid\SerialColumn'],

@@ -270,7 +270,7 @@ class ExcelCreator
             $sheet->setCellValueByColumnAndRow($columnIndex + 1, $rowIndex + $i, $item['participant']->surname);
             $sheet->setCellValueByColumnAndRow($columnIndex + 2, $rowIndex + $i, $item['participant']->name);
             $sheet->setCellValueByColumnAndRow($columnIndex + 3, $rowIndex + $i, $item['participant']->patronymic);
-            $sheet->setCellValueByColumnAndRow($columnIndex + 4, $rowIndex + $i, $item['participant']->getSex());
+            $sheet->setCellValueByColumnAndRow($columnIndex + 4, $rowIndex + $i, $item['participant']->getGender());
             $sheet->setCellValueByColumnAndRow($columnIndex + 5, $rowIndex + $i, Yii::$app->formatter->asDate($item['participant']->birthdate, 'php:d.m.Y'));
             $sheet->setCellValueByColumnAndRow($columnIndex + 6, $rowIndex + $i, 'РФ');
             $sheet->setCellValueByColumnAndRow($columnIndex + 7, $rowIndex + $i, $item['participant']->getOVZ());

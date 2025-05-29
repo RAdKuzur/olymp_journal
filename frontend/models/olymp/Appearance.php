@@ -11,7 +11,7 @@ use Yii;
  * @property int $id
  * @property int $application_id
  * @property int $status
- * @property int $auditorium
+ * @property string $auditorium
  *
  * @property Application $application
  */
@@ -47,7 +47,8 @@ class Appearance extends \yii\db\ActiveRecord
     {
         return [
             [['application_id', 'status', 'auditorium'], 'required'],
-            [['application_id', 'status', 'auditorium'], 'integer'],
+            [['application_id', 'status'], 'integer'],
+            [['auditorium'], 'string', 'max' => 64],
             [['application_id'], 'exist', 'skipOnError' => true, 'targetClass' => Application::class, 'targetAttribute' => ['application_id' => 'id']],
         ];
     }

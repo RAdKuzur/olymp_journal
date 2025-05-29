@@ -20,6 +20,9 @@ class ApplicationRepository
     public function getBySubjectCategoryId($subjectCategoryId){
         return Application::find()->where(['subject_category_id' => $subjectCategoryId])->all();
     }
+    public function getApplication($participantId, $subjectCategoryId){
+        return Application::find()->where(['participant_id' => $participantId])->where(['subject_category_id' => $subjectCategoryId])->one();
+    }
     public function getBySubjectCode($code){
         return Application::find()
             ->joinWith('subjectCategory')

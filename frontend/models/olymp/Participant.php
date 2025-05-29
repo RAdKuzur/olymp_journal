@@ -2,6 +2,7 @@
 
 namespace frontend\models\olymp;
 
+use common\components\Dictionary;
 use Yii;
 
 /**
@@ -95,10 +96,10 @@ class Participant extends \yii\db\ActiveRecord
     }
     public function getGender()
     {
-        return $this->sex == 1 ? 'Мужской' : 'Женский';
+        return $this->sex == Dictionary::MALE ? 'Мужской' : 'Женский';
     }
     public function getOvz()
     {
-        return $this->disability == 1 ? 'Нет ОВЗ' : 'Есть ОВЗ';
+        return $this->disability == Dictionary::HEALTHY ? 'Нет ОВЗ' : 'Есть ОВЗ';
     }
 }
