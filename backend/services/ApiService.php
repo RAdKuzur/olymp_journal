@@ -1,5 +1,6 @@
 <?php
 namespace backend\services;
+use Yii;
 use yii\base\Component;
 use yii\httpclient\Client;
 use yii\web\HttpException;
@@ -124,21 +125,26 @@ class ApiService extends Component
             ->setMethod($method)
             ->setUrl($url)
             ->setHeaders(array_merge($this->defaultHeaders, $headers))
-            ->setOptions(['timeout' => $this->timeout]);
+            ->setOptions([
+                'timeout' => $this->timeout,
+                'sslVerifyPeer' => false,
+                'sslVersion' => 6,
+            ]);
 
         if ($method === 'GET') {
             $request->setData($data);
         } else {
-            $request->setData($data);
+            $request->setContent(json_encode($data));
         }
-
         $response = $request->send();
 
         if (!$response->isOk) {
-            throw new HttpException($response->statusCode, $response->content);
+            Yii::$app->session->setFlash('error', $response->getContent());
         }
-
-        return $response->data;
+        return [
+            'content' => $response->content,
+            'cookies' => $response->getCookies()
+        ];
     }
     public function answer($data, $message = null, $success = true, $code = 200)
     {

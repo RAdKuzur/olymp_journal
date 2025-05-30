@@ -35,24 +35,20 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Главная', 'url' => Yii::$app->params['frontUrl'] . '/index.php?r=site/index'],
+        ['label' => 'Главная', 'url' => Yii::$app->params['frontUrl'] . '/index.php?r=subject-category/index'],
         ['label' => 'Олимпиады', 'url' => ['subject-category/index']],
         ['label' => 'Админ-панель', 'url' => Yii::$app->params['backUrl'] . '/index.php?r=admin/subject/index'],
     ];
-    if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
-    }
-
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav me-auto mb-2 mb-md-0'],
         'items' => $menuItems,
     ]);
-    if (Yii::$app->user->isGuest) {
+    if (!Yii::$app->request->cookies->getValue('usernameFront')) {
         echo Html::tag('div',Html::a('Login',['/site/login'],['class' => ['btn btn-link login text-decoration-none']]),['class' => ['d-flex']]);
     } else {
         echo Html::beginForm(['/site/logout'], 'post', ['class' => 'd-flex'])
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Logout (' . Yii::$app->request->cookies->getValue('usernameFront')['email'] . ')',
                 ['class' => 'btn btn-link logout text-decoration-none']
             )
             . Html::endForm();

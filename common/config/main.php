@@ -25,9 +25,9 @@ return [
         ],
         'apiService' => [
             'class' => 'backend\services\ApiService',
-            'baseUrl' => 'https://api.example.com/v1/',
-            'timeout' => 60, // опционально
-            'defaultHeaders' => [ // опционально
+            'baseUrl' => 'http://172.16.0.94/olymp_journal/frontend/web/api',
+            'timeout' => 60,
+            'defaultHeaders' => [
                 'Authorization' => 'Bearer your-access-token',
             ],
         ],

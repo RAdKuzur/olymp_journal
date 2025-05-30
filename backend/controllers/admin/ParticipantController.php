@@ -63,4 +63,10 @@ class ParticipantController extends Controller
         $this->participantRepository->delete($model);
         return $this->redirect(['index']);
     }
+    public function beforeAction($action){
+        if (!Yii::$app->request->cookies->has('usernameBack')){
+            return $this->redirect('index.php?r=site/login');
+        }
+        return parent::beforeAction($action);
+    }
 }

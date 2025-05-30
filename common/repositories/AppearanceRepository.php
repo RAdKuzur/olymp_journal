@@ -35,6 +35,7 @@ class AppearanceRepository
         if(!$appearance->save()){
             throw new \RuntimeException('Saving error.');
         }
+        return $appearance->id;
     }
     public function getAppearancesBySubjectCategoryId($subjectCategoryId)
     {

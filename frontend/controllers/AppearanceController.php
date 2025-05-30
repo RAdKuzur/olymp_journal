@@ -67,4 +67,10 @@ class AppearanceController extends \yii\web\Controller
         }
         return ['success' => false];
     }
+    public function beforeAction($action){
+        if (!Yii::$app->request->cookies->has('usernameFront')){
+            return $this->redirect('index.php?r=site/login');
+        }
+        return parent::beforeAction($action);
+    }
 }
