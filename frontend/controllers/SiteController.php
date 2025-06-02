@@ -48,7 +48,7 @@ class SiteController extends Controller
 
             $content = json_decode($response['content']);
             $token = $response['cookies']->getValue('token');
-            if ($content->code == ApiHelper::STATUS_OK && isset($token)) {
+            if ($content->status_code == ApiHelper::STATUS_OK && isset($token)) {
                 // Создаем cookie
                 $cookie = new \yii\web\Cookie([
                     'name' => 'usernameFront',
