@@ -11,16 +11,16 @@ return [
         ],
         'redis' => [
             'class' => 'yii\redis\Connection',
-            'hostname' => 'localhost',
+            'hostname' => '172.16.0.94',
             'port' => 6379,
             'database' => 0,
         ],
         'rabbitmq' => [
             'class' => 'common\components\RabbitMQComponent',
-            'host' => 'localhost',
+            'host' => '172.16.0.94',
             'port' => 5672,
-            'user' => 'guest',
-            'password' => 'guest',
+            'user' => 'test',
+            'password' => 'test',
             'vhost' => '/',
         ],
         'apiService' => [
