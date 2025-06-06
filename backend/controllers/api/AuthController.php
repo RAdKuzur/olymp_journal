@@ -2,7 +2,6 @@
 
 namespace backend\controllers\api;
 
-use backend\services\ApiService;
 use common\repositories\ApplicationRepository;
 use Yii;
 use yii\web\Controller;

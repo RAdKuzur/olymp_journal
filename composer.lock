@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "bower-asset/bootstrap",
-            "version": "v5.3.6",
+            "version": "v5.2.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "f849680d16a9695c9a6c9c062d6cff55ddcf071e"
+                "url": "git@github.com:twbs/bootstrap.git",
+                "reference": "cb021439c683d9805e2864c58095b92d405e9b11"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/f849680d16a9695c9a6c9c062d6cff55ddcf071e",
-                "reference": "f849680d16a9695c9a6c9c062d6cff55ddcf071e"
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/cb021439c683d9805e2864c58095b92d405e9b11",
+                "reference": "cb021439c683d9805e2864c58095b92d405e9b11"
             },
             "type": "bower-asset"
         },
@@ -3105,16 +3105,16 @@
         },
         {
             "name": "yiisoft/yii2-redis",
-            "version": "2.0.19",
+            "version": "2.0.20",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-redis.git",
-                "reference": "81a4a562873bca9f383d5b95db57d161d5828e24"
+                "reference": "d5b89cb4977b73bc813d3b85a1017337ac64267c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/81a4a562873bca9f383d5b95db57d161d5828e24",
-                "reference": "81a4a562873bca9f383d5b95db57d161d5828e24",
+                "url": "https://api.github.com/repos/yiisoft/yii2-redis/zipball/d5b89cb4977b73bc813d3b85a1017337ac64267c",
+                "reference": "d5b89cb4977b73bc813d3b85a1017337ac64267c",
                 "shasum": ""
             },
             "require": {
@@ -3175,7 +3175,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-02-13T21:03:06+00:00"
+            "time": "2025-06-05T04:02:45+00:00"
         },
         {
             "name": "yiisoft/yii2-symfonymailer",

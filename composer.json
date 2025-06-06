@@ -30,8 +30,7 @@
         "yiisoft/yii2-jui": "^2.0",
         "yiisoft/yii2-httpclient": "^2.0",
         "grpc/grpc": "^1.57",
-        "google/protobuf": "^4.31",
-      "ext-grpc": "*"
+        "google/protobuf": "^4.31"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

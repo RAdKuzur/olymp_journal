@@ -4,6 +4,7 @@ namespace frontend\controllers;
 
 
 
+use common\components\AuthComponent;
 use common\components\RedisComponent;
 use common\repositories\SubjectCategoryRepository;
 use common\repositories\TaskApplicationRepository;
@@ -135,7 +136,7 @@ class SubjectCategoryController extends \yii\web\Controller
     }
     public function beforeAction($action){
 
-        if (!Yii::$app->request->cookies->has('usernameFront')){
+        if (AuthComponent::isGuest()){
             return $this->redirect('index.php?r=site/login');
         }
         return parent::beforeAction($action);

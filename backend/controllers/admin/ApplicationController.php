@@ -2,6 +2,7 @@
 
 namespace backend\controllers\admin;
 
+use common\components\AuthComponent;
 use common\repositories\ApplicationRepository;
 use common\repositories\ParticipantRepository;
 use common\repositories\SubjectCategoryRepository;
@@ -68,7 +69,7 @@ class ApplicationController extends Controller
         return $this->redirect(['index']);
     }
     public function beforeAction($action){
-        if (!Yii::$app->request->cookies->has('usernameBack')){
+        if (AuthComponent::isGuest()){
             return $this->redirect('index.php?r=site/login');
         }
         return parent::beforeAction($action);

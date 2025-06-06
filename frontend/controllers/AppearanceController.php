@@ -2,6 +2,7 @@
 
 namespace frontend\controllers;
 
+use common\components\AuthComponent;
 use common\repositories\AppearanceRepository;
 use common\repositories\TaskApplicationRepository;
 use common\services\AppearanceService;
@@ -68,7 +69,7 @@ class AppearanceController extends \yii\web\Controller
         return ['success' => false];
     }
     public function beforeAction($action){
-        if (!Yii::$app->request->cookies->has('usernameFront')){
+        if (AuthComponent::isGuest()){
             return $this->redirect('index.php?r=site/login');
         }
         return parent::beforeAction($action);

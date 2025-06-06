@@ -10,4 +10,5 @@ return [
     'backUrl' => 'https://172.16.0.94/olymp_journal/backend/web',
     'frontName' => 'ВсОШ. Учёт',
     'backName' => 'ВсОШ. Админ-учёт',
+    'authRequired' => false,
 ];

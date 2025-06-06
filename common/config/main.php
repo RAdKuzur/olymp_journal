@@ -24,7 +24,7 @@ return [
             'vhost' => '/',
         ],
         'apiService' => [
-            'class' => 'backend\services\ApiService',
+            'class' => 'common\services\ApiService',
             'baseUrl' => 'http://172.16.0.94/olymp_journal/frontend/web/api',
             'timeout' => 60,
             'defaultHeaders' => [

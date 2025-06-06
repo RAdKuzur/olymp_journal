@@ -1,5 +1,5 @@
 <?php
-namespace backend\services;
+namespace common\services;
 use Yii;
 use yii\base\Component;
 use yii\httpclient\Client;
