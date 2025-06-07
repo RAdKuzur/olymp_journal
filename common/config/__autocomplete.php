@@ -22,7 +22,10 @@ class Yii {
  * @property yii\rbac\DbManager $authManager 
  * @property \yii\web\User|__WebUser $user
  * @property \common\components\RabbitMQComponent $rabbitmq
- * 
+ * @property \common\components\dictionaries\RegionDictionary $regions
+ * @property \common\components\dictionaries\CategoryDictionary $categories
+ * @property \common\components\dictionaries\GenderDictionary $genders
+ * @property \common\components\dictionaries\DisabilityDictionary $disability
  */
 class __Application {
 }

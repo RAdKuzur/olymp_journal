@@ -31,5 +31,18 @@ return [
                 'Authorization' => 'Bearer your-access-token',
             ],
         ],
+        'categories' => [
+            'class' => 'common\components\dictionaries\CategoryDictionary',
+        ],
+        'disability' => [
+            'class' => 'common\components\dictionaries\DisabilityDictionary',
+        ],
+        'genders' => [
+            'class' => 'common\components\dictionaries\GenderDictionary',
+        ],
+        'regions' => [
+            'class' => 'common\components\dictionaries\RegionDictionary',
+        ]
+
     ],
 ];
