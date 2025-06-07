@@ -42,6 +42,12 @@ return [
         ],
         'regions' => [
             'class' => 'common\components\dictionaries\RegionDictionary',
+        ],
+        'countries' => [
+            'class' => 'common\components\dictionaries\CountryDictionary',
+        ],
+        'classes' => [
+            'class' => 'common\components\dictionaries\ClassDictionary',
         ]
 
     ],

@@ -2,6 +2,8 @@
 
 namespace common\components\dictionaries;
 
+use InvalidArgumentException;
+
 abstract class BaseDictionary
 {
     protected $list;

@@ -40,7 +40,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'attribute' => 'citizenship',
                 'label' => 'Гражданство',
                 'value' => function($model) {
-                    return (\common\components\Dictionary::getCountry())[$model->citizenship];
+                    return Yii::$app->countries->getList()[$model->citizenship];
                 }
             ],
             [

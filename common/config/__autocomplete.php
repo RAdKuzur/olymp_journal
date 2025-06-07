@@ -26,6 +26,8 @@ class Yii {
  * @property \common\components\dictionaries\CategoryDictionary $categories
  * @property \common\components\dictionaries\GenderDictionary $genders
  * @property \common\components\dictionaries\DisabilityDictionary $disability
+ * @property \common\components\dictionaries\CountryDictionary $countries
+ * @property \common\components\dictionaries\ClassDictionary $classes
  */
 class __Application {
 }

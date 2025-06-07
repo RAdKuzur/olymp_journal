@@ -17,7 +17,7 @@ use yii\jui\DatePicker;
 ])->label('Телефон'); ?>
 
 <?= $form->field($model, 'sex')->dropDownList(
-    \common\components\Dictionary::getSex()
+    Yii::$app->genders->getList()
 )->label('Пол'); ?>
 
 <?= $form->field($model, 'birthdate')->widget(DatePicker::class, [
@@ -32,7 +32,7 @@ use yii\jui\DatePicker;
 ])->label('Дата рождения'); ?>
 
 <?= $form->field($model, 'citizenship')->dropDownList(
-    \common\components\Dictionary::getCountry()
+    Yii::$app->countries->getList()
 )->label('Гражданство'); ?>
 <?= $form->field($model, 'school_id')->dropDownList(
     \yii\helpers\ArrayHelper::map($schools, 'id', 'name'),
@@ -40,11 +40,11 @@ use yii\jui\DatePicker;
 )->label('Школа'); ?>
 
 <?= $form->field($model, 'disability')->dropDownList(
-    \common\components\Dictionary::getOVZ()
+    Yii::$app->disability->getList()
 )->label('ОВЗ'); ?>
 
 <?= $form->field($model, 'class')->dropDownList(
-    \common\components\Dictionary::getClasses()
+    Yii::$app->classes->getList()
 )->label('Класс обучения'); ?>
 
 <?= Html::submitButton('Сохранить', ['class' => 'btn btn-primary']) ?>

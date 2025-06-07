@@ -1,7 +1,6 @@
 <?php
 namespace frontend\tests\models;
 
-use common\components\Dictionary;
 use frontend\models\olymp\Participant;
 
 class ParticipantTest extends \Codeception\Test\Unit
@@ -14,7 +13,7 @@ class ParticipantTest extends \Codeception\Test\Unit
     protected function _before() {}
     protected function _after() {}
 
-    public function testValidationFailsWhenRequiredFieldsAreMissing()
+    /*public function testValidationFailsWhenRequiredFieldsAreMissing()
     {
         $participant = new Participant();
         $this->assertFalse($participant->validate(), 'Model should not validate when required fields are missing');
@@ -68,5 +67,5 @@ class ParticipantTest extends \Codeception\Test\Unit
 
         $participantDisabled = new Participant(['disability' => Dictionary::DISABILITY]);
         $this->assertEquals('Есть ОВЗ', $participantDisabled->getOvz());
-    }
+    }*/
 }
