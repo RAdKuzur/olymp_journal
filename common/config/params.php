@@ -8,7 +8,7 @@ return [
     'user.passwordMinLength' => 8,
     'frontUrl' => 'https://172.16.0.94/olymp_journal/frontend/web',
     'backUrl' => 'https://172.16.0.94/olymp_journal/backend/web',
-    'frontName' => 'ВсОШ. Учёт',
-    'backName' => 'ВсОШ. Админ-учёт',
+    'frontName' => 'ВсОШ.Учёт',
+    'backName' => 'ВсОШ.Учёт.Админ-панель',
     'authRequired' => false,
 ];
