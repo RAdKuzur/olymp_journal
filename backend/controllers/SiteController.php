@@ -32,7 +32,7 @@ class SiteController extends Controller
         }
 
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post())) {
+        if ($model->load(Yii::$app->request->post()) && Yii::$app->params['authRequired']) {
             $response = Yii::$app->apiService->post(ApiHelper::AUTH_URL_API, [
                 'email' => $model->username,
                 'password' => $model->password,
